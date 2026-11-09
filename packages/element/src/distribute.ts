@@ -26,10 +26,10 @@ export const distributeElements = (
   /** measures the labels of the bound arrows the distribution moves */
   renderEnvironment?: RenderEnvironment,
 ): NonDeletedExcalidrawElement[] => {
-  const [start, mid, end, extent] =
+  const [[start, mid, end], extent] =
     distribution.axis === "x"
-      ? (["minX", "midX", "maxX", "width"] as const)
-      : (["minY", "midY", "maxY", "height"] as const);
+      ? ([["minX", "midX", "maxX"], "width"] as const)
+      : ([["minY", "midY", "maxY"], "height"] as const);
 
   const bounds = getCommonBoundingBox(selectedElements);
   const groups = getSelectedElementsByGroup(
